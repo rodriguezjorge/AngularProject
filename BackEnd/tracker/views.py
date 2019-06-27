@@ -1,12 +1,39 @@
-from rest_framework import status
+from rest_framework import status,permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
+from rest_framework.views import APIView
+
+
 
 from tracker.models import Expenses
 from tracker.serializer import ExpensesSerializer
 
+from django.contrib.auth import authenticate
+
+
 
 # Create your views here.
+
+
+
+class LoginView(APIView):
+    permission_classes = [permissions.AllowAny, ]
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+
+        user = authenticate(username=data.get('username'), password=data.get('password'))
+
+        if user:
+            token, _ = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key}, status=200)
+        return Response(status=400)
+
+
+
+
+
 @api_view(['GET', 'POST'])
 def GetExpenses(request):
     """
