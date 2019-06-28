@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import {User} from './user.models'
+import { User } from './user.models'
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
   title = 'app';
   user = new Subject<User>();
@@ -14,16 +12,17 @@ export class AuthService {
     password: ''
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-    private handleAuth(token:string){
-    this.http.post('http://127.0.0.1:8000/login/', this.creds)
+  handleAuth(creds) {
+    this.http.post('http://127.0.0.1:8000/login/', creds)
       .subscribe(
-
         result => {
           console.log('I logged in', result)
           const user = new User(result['token'])
           console.log(user)
           this.user.next(user);
-        }
+          return 
+        })
+  }
 }

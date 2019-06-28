@@ -10,7 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExpensesListComponent } from './expenses-list/expenses-list.component';
 import { RegisterComponent } from './register/register.component';
 import {GetService} from './get.service'
-import {AuthService} from './login/auth.service'
+import {AuthService} from './login/auth.service';
+import { ExpensesAddComponent } from './expenses-add/expenses-add.component';
+import { ExpensesEditComponent } from './expenses-edit/expenses-edit.component';
+import { ExpensesDeleteComponent } from './expenses-delete/expenses-delete.component'
 
 
 @NgModule({
@@ -18,7 +21,11 @@ import {AuthService} from './login/auth.service'
     AppComponent,
     LoginComponent,
     ExpensesListComponent,
-    RegisterComponent
+    RegisterComponent,
+    ExpensesAddComponent,
+    ExpensesEditComponent,
+    ExpensesDeleteComponent,
+
   ],
   imports: [
     BrowserModule,

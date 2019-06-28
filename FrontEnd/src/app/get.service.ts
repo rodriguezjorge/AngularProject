@@ -20,6 +20,14 @@ export class GetService {
   }
   postExpenses(model): any {
     // alert(employee)
-    return this.http.post(this._url, model);
+    return this.http.post<IModel[]>(this._url, model)
+    .pipe(catchError(this.errorHandler));
   }
+  updateExpenses(model): any {
+    // alert(employee)
+    return this.http.put<IModel[]>(this._url, model)
+    .pipe(catchError(this.errorHandler));
+  }
+
+
 }
