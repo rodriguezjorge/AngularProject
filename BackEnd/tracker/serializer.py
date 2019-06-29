@@ -6,4 +6,4 @@ from tracker.models import Expenses
 class ExpensesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expenses
-        fields = ('description', 'amount', 'types', 'date')
+        fields = ('id','description', 'amount', 'types', 'date')

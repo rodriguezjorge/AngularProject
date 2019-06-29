@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'list', component: ExpensesListComponent },
   { path: 'new', component: ExpensesAddComponent },
-  { path: 'edit', component: ExpensesEditComponent },
-  { path: 'delete', component: ExpensesDeleteComponent },
+  { path: 'edit/:id', component: ExpensesEditComponent },
+  { path: 'delete/:id', component: ExpensesDeleteComponent },
 
 ];
 

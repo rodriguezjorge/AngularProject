@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GetService } from './../get.service';
 import {Router} from "@angular/router"
+import { Observable } from 'rxjs';
+import { IModel } from '../model';
 @Component({
   selector: 'app-expenses-list',
   templateUrl: './expenses-list.component.html',
@@ -9,21 +11,29 @@ import {Router} from "@angular/router"
 export class ExpensesListComponent implements OnInit {
   public expenses = [];
   public errorMsg;
-  constructor(private router: Router,private _getService: GetService) { }
+
+
+  disabled: boolean = false;
+
+  constructor(private router: Router,private _getService: GetService) {  }
 
   ngOnInit() {
     this._getService.getExpenses().subscribe(
       (data) =>
-        // console.log(data)
-        this.expenses = data
-      ,
+      this.expenses = data,
       (error) => this.errorMsg = error
     );
   }
 
-  onSelect(expense) {
-    console.log(expense)
-    this.router.navigate(['/edit', expense]);
+  onSelectEdit(expense) {
+    localStorage.setItem('parentExpense', JSON.stringify(expense));
+    // console.log(expense);
+    this.router.navigate(['/edit', expense.id]);
+  }
+  onSelectDelete(expense) {
+    // console.log(expense)
+    // this.parentExpense=expense
+    this.router.navigate(['/delete', expense.id]);
   }
 
 }

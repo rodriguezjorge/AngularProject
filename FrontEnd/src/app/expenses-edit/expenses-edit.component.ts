@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IModel } from '../model';
+import {Router} from "@angular/router"
+import { GetService } from './../get.service';
 
 @Component({
   selector: 'app-expenses-edit',
   templateUrl: './expenses-edit.component.html',
   styleUrls: ['./expenses-edit.component.css']
 })
-export class ExpensesEditComponent implements OnInit {
+export class ExpensesEditComponent  {
 
-  constructor() { }
+  childExpense:IModel = JSON.parse(localStorage.getItem('parentExpense'));
 
-  ngOnInit() {
+  submitted = false;
+
+  public expenses = [];
+  public errorMsg;
+
+  constructor(private router: Router,private _getService: GetService) { }
+
+
+
+  onSubmit(expensesForm) {
+    console.log(expensesForm);
+    console.log(this.childExpense.id)
+    this.submitted = true;
+    this._getService.updateExpenses(this.childExpense.id,expensesForm).subscribe(
+    );
+    this.router.navigate(['/list']);
+
+
   }
+
 
 }
