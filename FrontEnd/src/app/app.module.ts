@@ -13,7 +13,10 @@ import {GetService} from './get.service'
 import {AuthService} from './login/auth.service';
 import { ExpensesAddComponent } from './expenses-add/expenses-add.component';
 import { ExpensesEditComponent } from './expenses-edit/expenses-edit.component';
-import { ExpensesDeleteComponent } from './expenses-delete/expenses-delete.component'
+import { ExpensesDeleteComponent } from './expenses-delete/expenses-delete.component';
+import { PiechartComponent } from './piechart/piechart.component';
+import {ChartsModule} from 'ng2-charts';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
@@ -25,6 +28,8 @@ import { ExpensesDeleteComponent } from './expenses-delete/expenses-delete.compo
     ExpensesAddComponent,
     ExpensesEditComponent,
     ExpensesDeleteComponent,
+    PiechartComponent,
+    RegistrationComponent,
 
   ],
   imports: [
@@ -32,6 +37,7 @@ import { ExpensesDeleteComponent } from './expenses-delete/expenses-delete.compo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ChartsModule,
   ],
   providers: [
     GetService,

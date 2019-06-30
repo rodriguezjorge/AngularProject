@@ -27,5 +27,9 @@ export class LoginComponent {
 
       this.router.navigate(['/list']);
   }
+  onSelectRegistration() {
+    this.router.navigate(['registration']);
+  }
+
 
 }

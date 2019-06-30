@@ -19,10 +19,13 @@ export class ExpensesListComponent implements OnInit {
 
   ngOnInit() {
     this._getService.getExpenses().subscribe(
-      (data) =>
-      this.expenses = data,
+      (data) =>this.expenses = data
+      ,
       (error) => this.errorMsg = error
+
     );
+
+    // console.log(this.expenses)
   }
 
   onSelectEdit(expense) {
@@ -36,4 +39,14 @@ export class ExpensesListComponent implements OnInit {
     this.router.navigate(['/delete', expense.id]);
   }
 
+  onSelectGraph() {
+    localStorage.setItem('parentExpenses', JSON.stringify(this.expenses));
+    // console.log(expense)
+    // this.parentExpense=expense
+    this.router.navigate(['graph']);
+  }
+
+  onSelectLogout() {
+    this.router.navigate(['login']);
+  }
 }

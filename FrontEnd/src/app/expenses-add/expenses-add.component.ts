@@ -28,4 +28,8 @@ export class ExpensesAddComponent {
 
   }
 
+  onSelectBack() {
+    this.router.navigate(['list']);
+  }
+
 }

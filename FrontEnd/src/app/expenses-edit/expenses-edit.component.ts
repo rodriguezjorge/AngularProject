@@ -32,5 +32,9 @@ export class ExpensesEditComponent  {
 
   }
 
+  onSelectBack() {
+    this.router.navigate(['list']);
+  }
+
 
 }

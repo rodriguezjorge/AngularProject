@@ -1,0 +1,30 @@
+
+<div class="container">
+  <h1>Registration</h1>
+  <form (ngSubmit)="onSubmit(expensesForm.value)" #expensesForm="ngForm">
+    <div class="form-group">
+      <label for="description">Name</label>
+      <input type="text" class="form-control" id="description" name='description' ngModel required>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Email</label>
+      <input type="email" class="form-control" id="amount" name='amount' ngModel>
+    </div>
+<div class="form-group">
+      <label for="amount">Password</label>
+      <input type="text" class="form-control" id="amount" name='amount' ngModel>
+    </div>
+<div class="form-group">
+      <label for="amount">Repeat Password</label>
+      <input type="text" class="form-control" id="amount" name='amount' ngModel>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>
+
+<button (click)="onSelectBack()">back</button>
