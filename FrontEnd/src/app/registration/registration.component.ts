@@ -13,14 +13,22 @@ export class RegistrationComponent  {
   message: string
   creds = {
     username: '',
-    password: ''
+    password: '',
+    email:''
   }
+  password2:string
 
   onSubmit() {
+    console.log(this.password2)
+    console.log(this.creds.password)
+    if(this.creds.password === this.password2){
     this._authService.handleReg(this.creds);
-    if (!this._authService.isAuthenticated()){
-    // console.log('Invalid username or password')
-    this.message='Invalid username or password'
+    // if (!this._authService.isAuthenticated()){
+    console.log('password match')
+    this.message=''
+    // }
+  }else{
+      this.message='Invalid username or password'
     }
 
   }

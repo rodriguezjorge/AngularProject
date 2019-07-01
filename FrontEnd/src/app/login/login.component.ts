@@ -22,7 +22,7 @@ export class LoginComponent {
 
   onSubmit() {
     this._authService.handleAuth(this.creds);
-    if (!this._authService.isAuthenticated()){
+    if (!this._authService){
     // console.log('Invalid username or password')
     this.message='Invalid username or password'
     }

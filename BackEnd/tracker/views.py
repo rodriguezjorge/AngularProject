@@ -41,10 +41,11 @@ class RegistrationView(APIView):
         print(data['username'])
 
 
-        user = create_user(username=data['username'],email=None, password=data['password'])
+
+        user = User.objects.create_user(username=data['username'],email=None, password=data['password'])
         if user:
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=200,)
+
+            return Response({'response': 'register'}, status=200,)
         return Response(status=400)
 
 

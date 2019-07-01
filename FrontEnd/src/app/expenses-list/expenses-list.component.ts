@@ -22,7 +22,8 @@ export class ExpensesListComponent implements OnInit {
 
   ngOnInit() {
     this._getService.getExpenses().subscribe(
-      (data) =>this.expenses = data
+      (data) =>this.expenses =
+      data
       ,
       (error) => this.errorMsg = error
 

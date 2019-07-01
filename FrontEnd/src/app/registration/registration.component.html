@@ -4,25 +4,32 @@
   <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="Username">Username</label>
-      <input type="text" name="username" [(ngModel)]="creds.username"   required>
+      <input type="text" name="username" [(ngModel)]="creds.username" placeholder='username' pattern='.{3,}' required>
     </div>
 
     <div class="form-group">
       <label for="Email">Email</label>
-     <input type="text" name="email"  required>
+     <input type="text" name="email" placeholder='username' [(ngModel)]="creds.email"required>
     </div>
 <div class="form-group">
       <label for="Password">Password</label>
-      <input type="password" name="password" [(ngModel)]="creds.password" required>
+      
+
+<input id="password"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$" name="password" type="password" pattern="^\S{6,}$" [(ngModel)]="creds.password"  placeholder="Password" required>
+
     </div>
 <div class="form-group">
       <label for="password2">Repeat Password</label>
-      <input type="password" name="password2" required>
+
+
+<input id="password_two" name="password_two" type="password" pattern="^\S{6,}$"  [(ngModel)]="password2"  placeholder="Verify Password" required>
+<label>{{message}}</label>
     </div>
 
 
 
-    <button type="submit" >Submit</button>
+    <button type="submit" [disabled]='!loginForm.valid' >Submit</button>
+
 
   </form>
 </div>
