@@ -9,6 +9,16 @@ class Expenses(models.Model):
     date =models.DateField(auto_now=False, auto_now_add=False)
 
 
+# class User(models.Model):
+#     # ID, Name, Speaker, Venue, Duration
+#     email = models.CharField(max_length=100,unique=True)
+#     username = models.CharField(max_length=100,unique=True)
+#     password = models.CharField(max_length=100)
+
+
+
+
+
 # from django.db import models
 
 # # Create your models here.

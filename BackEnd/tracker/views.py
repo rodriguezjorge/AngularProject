@@ -3,13 +3,14 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
-
+from django.contrib.auth.models import UserManager, User
 
 
 from tracker.models import Expenses
 from tracker.serializer import ExpensesSerializer
 
 from django.contrib.auth import authenticate
+
 
 
 
@@ -31,6 +32,20 @@ class LoginView(APIView):
             return Response({'token': token.key}, status=200,)
         return Response(status=400)
 
+
+class RegistrationView(APIView):
+    permission_classes = [permissions.AllowAny, ]
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        print(data['username'])
+
+
+        user = create_user(username=data['username'],email=None, password=data['password'])
+        if user:
+            token, _ = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key}, status=200,)
+        return Response(status=400)
 
 
 

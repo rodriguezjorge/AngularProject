@@ -22,5 +22,6 @@ urlpatterns = [
     path('track/', views.GetExpenses, name='GetExpenses'),
     path('track/<int:pk>', views.GetExpense, name='GetExpense'),
     path('login/', views.LoginView.as_view(), name='LoginView'),
+    path('registration/', views.RegistrationView.as_view(), name='RegistrationView'),
     # path('rest-auth/', include('rest_auth.urls')),
 ]

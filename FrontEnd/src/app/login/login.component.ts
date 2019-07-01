@@ -10,22 +10,23 @@ import {AuthService} from './auth.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  message: string
   creds = {
     username: '',
     password: ''
   }
 
-  constructor(private router: Router,private _authService: AuthService ) {}
+  constructor(private router: Router,private _authService: AuthService ) {
+
+  }
 
   onSubmit() {
-    this._authService.handleAuth(this.creds)
-    // .subscribe(
-    //   (data) => this.expenses = data,
-    //   (error) => this.errorMsg = error
-    //   );
+    this._authService.handleAuth(this.creds);
+    if (!this._authService.isAuthenticated()){
+    // console.log('Invalid username or password')
+    this.message='Invalid username or password'
+    }
 
-    this.router.navigate(['list']);
   }
   onSelectRegistration() {
     this.router.navigate(['registration']);

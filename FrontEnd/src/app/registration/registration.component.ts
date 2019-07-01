@@ -1,17 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router"
-import { GetService } from './../get.service';
+import {AuthService} from '../login/auth.service'
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent  {
 
-  constructor(private router: Router,private _getService: GetService) { }
+  constructor(private router: Router,private _authService: AuthService) { }
+  message: string
+  creds = {
+    username: '',
+    password: ''
+  }
 
-  ngOnInit() {
+  onSubmit() {
+    this._authService.handleReg(this.creds);
+    if (!this._authService.isAuthenticated()){
+    // console.log('Invalid username or password')
+    this.message='Invalid username or password'
+    }
+
   }
 
 
