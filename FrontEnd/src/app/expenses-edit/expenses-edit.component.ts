@@ -2,11 +2,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IModel } from '../model';
 import {Router} from "@angular/router"
 import { GetService } from './../get.service';
+import {AuthService} from '../login/auth.service'
 
 @Component({
   selector: 'app-expenses-edit',
   templateUrl: './expenses-edit.component.html',
   styleUrls: ['./expenses-edit.component.css']
+
 })
 export class ExpensesEditComponent  {
 
@@ -17,7 +19,9 @@ export class ExpensesEditComponent  {
   public expenses = [];
   public errorMsg;
 
-  constructor(private router: Router,private _getService: GetService) { }
+  constructor(private router: Router,
+    private _getService: GetService,
+    private _authService: AuthService) { }
 
 
 
@@ -36,5 +40,9 @@ export class ExpensesEditComponent  {
     this.router.navigate(['list']);
   }
 
+  onSelectLogout() {
+    this._authService.logout()
+    this.router.navigate(['login']);
+  }
 
 }

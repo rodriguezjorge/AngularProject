@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { GetService } from './../get.service';
 import {Router} from "@angular/router"
+import {AuthService} from '../login/auth.service'
 
 @Component({
   selector: 'app-expenses-add',
@@ -14,7 +15,9 @@ export class ExpensesAddComponent {
   public expenses = [];
   public errorMsg;
 
-  constructor(private router: Router,private _getService: GetService) { }
+  constructor(private router: Router,
+    private _getService: GetService,
+    private _authService: AuthService) { }
 
 
 
@@ -32,4 +35,8 @@ export class ExpensesAddComponent {
     this.router.navigate(['list']);
   }
 
+  onSelectLogout() {
+    this._authService.logout()
+    this.router.navigate(['login']);
+  }
 }

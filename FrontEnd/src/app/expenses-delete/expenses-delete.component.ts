@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetService } from './../get.service';
 import {ActivatedRoute, Router, ParamMap} from "@angular/router"
+import {AuthService} from '../login/auth.service'
 
 @Component({
   selector: 'app-expenses-delete',
@@ -11,7 +12,10 @@ export class ExpensesDeleteComponent implements OnInit {
 
   public expenseId;
 
-  constructor(private router: Router,private _getService: GetService,private route: ActivatedRoute) { }
+  constructor(private router: Router,
+    private _getService: GetService,
+    private route: ActivatedRoute,
+    private _authService: AuthService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -36,4 +40,9 @@ export class ExpensesDeleteComponent implements OnInit {
 
       this.router.navigate(['/list']);
     };
+
+  onSelectLogout() {
+    this._authService.logout()
+    this.router.navigate(['login']);
+  }
 }

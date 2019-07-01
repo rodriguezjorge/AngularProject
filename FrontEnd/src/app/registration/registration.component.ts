@@ -14,5 +14,8 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
-  
+
+  onSelectBack() {
+    this.router.navigate(['login']);
+  }
 }

@@ -3,6 +3,7 @@ import { GetService } from './../get.service';
 import {Router} from "@angular/router"
 import { Observable } from 'rxjs';
 import { IModel } from '../model';
+import {AuthService} from '../login/auth.service'
 @Component({
   selector: 'app-expenses-list',
   templateUrl: './expenses-list.component.html',
@@ -15,7 +16,9 @@ export class ExpensesListComponent implements OnInit {
 
   disabled: boolean = false;
 
-  constructor(private router: Router,private _getService: GetService) {  }
+  constructor(private router: Router,
+    private _getService: GetService,
+    private _authService: AuthService) {  }
 
   ngOnInit() {
     this._getService.getExpenses().subscribe(
@@ -47,6 +50,7 @@ export class ExpensesListComponent implements OnInit {
   }
 
   onSelectLogout() {
+    this._authService.logout()
     this.router.navigate(['login']);
   }
 }

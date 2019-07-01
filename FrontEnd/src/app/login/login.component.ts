@@ -25,7 +25,7 @@ export class LoginComponent {
     //   (error) => this.errorMsg = error
     //   );
 
-      this.router.navigate(['/list']);
+    this.router.navigate(['list']);
   }
   onSelectRegistration() {
     this.router.navigate(['registration']);

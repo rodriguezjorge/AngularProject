@@ -17,6 +17,7 @@ import { ExpensesDeleteComponent } from './expenses-delete/expenses-delete.compo
 import { PiechartComponent } from './piechart/piechart.component';
 import {ChartsModule} from 'ng2-charts';
 import { RegistrationComponent } from './registration/registration.component';
+import { AuthGuard } from './login/auth.guard';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { RegistrationComponent } from './registration/registration.component';
   ],
   providers: [
     GetService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

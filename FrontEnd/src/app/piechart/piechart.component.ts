@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetService } from './../get.service';
 import {Router} from "@angular/router"
-
+import {AuthService} from '../login/auth.service'
 
 @Component({
   selector: 'app-piechart',
@@ -21,7 +21,9 @@ export class PiechartComponent implements OnInit {
 
   childExpenses= JSON.parse(localStorage.getItem('parentExpenses'));
 
-  constructor(private _getService: GetService, private router: Router,) {  }
+  constructor(private _getService: GetService,
+    private router: Router,
+    private _authService: AuthService) {  }
 
   ngOnInit() {
     // this._getService.getExpenses().subscribe(
@@ -51,5 +53,10 @@ export class PiechartComponent implements OnInit {
 
   onSelectBack() {
     this.router.navigate(['list']);
+  }
+
+  onSelectLogout() {
+    this._authService.logout()
+    this.router.navigate(['login']);
   }
 }
